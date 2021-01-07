@@ -3,4 +3,4 @@
 
 ## Gaussian Mixture Models (GMM)
 
-You find the code in [gmm_em.py](gmm_em.py).
+You can find the code in [gmm_em.py](gmm_em.py).
