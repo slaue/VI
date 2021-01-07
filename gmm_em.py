@@ -47,17 +47,16 @@ def plot(data, mu=None, sigma=None, title=''):
     plt.show()
 
 
-def E_step(mu, sigma, X_train):
+def E_step(mu, sigma, data):
     n_classes = mu.shape[0]
     rv = [multivariate_normal(mu[i], sigma[i]) for i in range(n_classes)]
-    p = np.array([rv[i].pdf(X_train) for i in range(n_classes)])
+    p = np.array([rv[i].pdf(data) for i in range(n_classes)])
 
     ### Please fill in here!
 
     return p
 
-def M_step(p, X_train):
-    n_classes = p.shape[0]
+def M_step(p, data):
 
     ### Please fill in here!
 
