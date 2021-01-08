@@ -2,22 +2,22 @@
 
 ## Regression
 
-![](regression.jpg)
+![](regression/regression.jpg)
 
-You can find the code in [regression.py](regression.py).
+You can find the code in [regression.py](regression/regression.py).
 
 ## Gaussian Mixture Models (GMM)
 
-![](gmm.jpg)
+![](gmm/gmm.jpg)
 
-You can find the code in [gmm_em.py](gmm_em.py).
+You can find the code in [gmm_em.py](gmm/gmm_em.py).
 
 
 ## Principal Component Analysis (PCA)
 
-![](pca.png)
+![](pca/pca.png)
 
 
 ## Latent Dirichlet Allocation (LDA)
 
-![](lda.png)
+![](lda/lda.png)
