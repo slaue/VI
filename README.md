@@ -4,6 +4,7 @@
 
 ![](regression.jpg)
 
+You can find the code in [regression.py](regression.py).
 
 ## Gaussian Mixture Models (GMM)
 
