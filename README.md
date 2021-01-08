@@ -6,6 +6,6 @@
 
 ## Gaussian Mixture Models (GMM)
 
-![](fig.jpg)
+![](gmm.jpg)
 
 You can find the code in [gmm_em.py](gmm_em.py).
