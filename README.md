@@ -1,5 +1,8 @@
 # Code for Variational Inference Class
 
+## Regression
+
+![](regression.jpg)
 
 ## Gaussian Mixture Models (GMM)
 
