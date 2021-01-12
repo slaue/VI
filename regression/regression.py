@@ -16,7 +16,7 @@ def load_data(file_name, m=None):
     return x, y
 
 
-def plot(x, y, w=None):
+def plot(x, y, w=None, sigma=None):
     plt.figure(figsize=(8, 5))
     plt.scatter(x, y, color='r', edgecolor='r', s=80, label="Samples")
 
@@ -30,6 +30,11 @@ def plot(x, y, w=None):
         plt.ylim((np.min(y)*1.2, np.max(y)*1.2))
 
         plt.plot(x_plot, np.dot(X_plot, w), linewidth=5, color='tab:blue', label="Model")
+
+        # also plot confidence intervall if given
+        if not sigma is None:
+            plt.plot(x_plot, np.dot(X_plot, w)+sigma, linewidth=2, color='tab:cyan')
+            plt.plot(x_plot, np.dot(X_plot, w)-sigma, linewidth=2, color='tab:cyan')
 
     plt.show()
 
