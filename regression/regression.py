@@ -3,9 +3,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def load_data():
-    file_name = 'data.csv'
-    # file_name = 'data2.csv'
+def load_data(file_name):
     data = np.loadtxt(file_name, delimiter=',')
     x = data[:, 0]
     y = data[:, 1]
@@ -18,22 +16,23 @@ def plot(x, y, w=None):
 
     # also plot the prediction
     if not w is None:
+        deg = w.shape[0]
         x_plot = np.linspace(-2, 6, 100)
-        m = x_plot.shape[0]
-        X_plot = np.vstack([x_plot, np.ones(m)]).T
+        X_plot = np.vander(x_plot, deg)
         plt.plot(x_plot, np.dot(X_plot, w), linewidth=5, color='tab:blue', label="Model")
 
     plt.show()
 
 
-def regression(x, y):
-
-    ### Please fill in here!
-
-    w = None
+def regression(x, y, deg=3):
+    X = np.vander(x, deg+1)
+    w = np.linalg.solve(np.dot(X.T, X), np.dot(X.T, y))
     return w
 
-x, y = load_data()
-plot(x, y)
-w = regression(x, y)
+x, y = load_data('data.csv')
+w = regression(x, y, deg=1)
+plot(x, y, w)
+
+x, y = load_data('data2.csv')
+w = regression(x, y, deg=3)
 plot(x, y, w)
