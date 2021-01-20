@@ -6,6 +6,12 @@
 
 You can find the code in [regression.py](regression/regression.py).
 
+## Classification / Gaussians
+
+![](classification/classification.jpg)
+
+You can find the code in [gaussian.py](classification/gaussian.py).
+
 ## Gaussian Mixture Models (GMM)
 
 ![](gmm/gmm.jpg)
