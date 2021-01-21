@@ -25,8 +25,7 @@ def generate_data(n=100):
 def plot(data, mu=None, sigma=None, title=''):
     cmap = [cm.Blues, cm.Greens, cm.Reds, cm.Oranges]
 
-
-    fig = plt.figure(figsize=(8, 8))
+    fig = plt.figure(figsize=(8, 4))
     ax = fig.add_subplot(111)
     ax.set_aspect('equal')
 
@@ -41,48 +40,45 @@ def plot(data, mu=None, sigma=None, title=''):
             rv = multivariate_normal(mu[i][:2], sigma[i][:2, :2])
             vals = rv.pdf(pos)
             y_max = np.max(vals)
-            ax.contourf(X1, X2, rv.pdf(pos), levels=[0.2*y_max, 0.4*y_max, 0.6*y_max, 0.8*y_max, y_max], alpha=0.5, cmap=cmap[i]) # , linewidths=3)
+            ax.contourf(X1, X2, vals, levels=[0.2*y_max, 0.4*y_max, 0.6*y_max, 0.8*y_max, y_max], alpha=0.5, cmap=cmap[i]) # , linewidths=3)
 
     plt.title(title)
     plt.show()
 
 
-def E_step(mu, sigma, data):
-    n_classes = mu.shape[0]
-    rv = [multivariate_normal(mu[i], sigma[i]) for i in range(n_classes)]
-    p = np.array([rv[i].pdf(data) for i in range(n_classes)])
+def E_step(p, mu, sigma, data):
 
     ### Please fill in here!
 
-    return p
+    return gamma
 
-def M_step(p, data):
+def M_step(gamma, data):
 
     ### Please fill in here!
 
-    return mu, sigma
+    return p, mu, sigma
 
 def EM(data, n_classes, iters=0, show=False):
-    # start with random means
+    # start with random p, random means, unit variance
     d = data.shape[1]
-    p = np.zeros(n_classes)
+    p = np.random.rand(n_classes)
+    p /= p.sum()
     mu = np.random.randn(n_classes, d)
     sigma = np.array([0.1*np.eye(d) for i in range(n_classes)])
 
     if show:
         plot(data, mu, sigma, title='iteration 0')
     for i in range(iters):
-        p = E_step(mu, sigma, data)
-        mu, sigma = M_step(p, data)
+        gamma = E_step(p, mu, sigma, data)
+        p, mu, sigma = M_step(gamma, data)
         if show:
             plot(data, mu, sigma, title=f'iteration {i+1}')
 
     return p, mu, sigma
 
 
-
+np.random.seed(0)
 data = generate_data(100)
 plot(data)
 
 p, mu, sigma = EM(data, n_classes=3, iters=0, show=True)
-
