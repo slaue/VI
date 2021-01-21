@@ -6,11 +6,11 @@
 
 You can find the code in [regression.py](regression/regression.py).
 
-## Classification / Gaussians
+## Classification / Gaussians / Quadratic Discriminant Analysis (QDA)
 
 ![](classification/classification.jpg)
 
-You can find the code in [gaussian.py](classification/gaussian.py).
+You can find the code in [qda.py](classification/qda.py).
 
 ## Gaussian Mixture Models (GMM)
 
